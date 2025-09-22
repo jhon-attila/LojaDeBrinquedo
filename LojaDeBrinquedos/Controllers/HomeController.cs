@@ -1,6 +1,7 @@
-using System.Diagnostics;
-using LojaDeBrinquedos.Models;
 using Microsoft.AspNetCore.Mvc;
+using LojaDeBrinquedos.Models;
+using LojaDeBrinquedos.Repositorio;
+using System.Diagnostics;
 
 namespace LojaDeBrinquedos.Controllers
 {
@@ -8,19 +9,18 @@ namespace LojaDeBrinquedos.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ProdutoRepositorio _produtoRepositorio;
+
+        public HomeController(ILogger<HomeController> logger, ProdutoRepositorio produtoRepositorio)
         {
             _logger = logger;
+            _produtoRepositorio = produtoRepositorio;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            var produtos = await _produtoRepositorio.TodosProdutos();
+            return View(produtos);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
