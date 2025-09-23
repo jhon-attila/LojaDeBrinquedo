@@ -18,5 +18,9 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #FDEB94;
+}
+.navbar-custom {
+    background-color: #1EEA66;
 }
