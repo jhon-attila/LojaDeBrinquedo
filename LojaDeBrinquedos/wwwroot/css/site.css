@@ -24,3 +24,9 @@ body {
 .navbar-custom {
     background-color: #1EEA66;
 }
+
+.btn div-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
